@@ -1,0 +1,244 @@
+@import '../node_modules/sass-bem-constructor/dist/sass-bem-constructor';
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+body {
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+
+@include utility('p3'){
+    padding: 3rem;
+}
+@include utility('ph3'){
+    padding-right: 3rem;
+    padding-left: 3rem;
+}
+@include utility('p2'){
+    padding: 2rem;
+}
+@include utility('p1'){
+    padding: 1rem;
+}
+@include utility('m3'){
+    margin: 3rem;
+}
+@include utility('mt3'){
+    margin: 3rem;
+}
+@include utility('mh3'){
+    margin-left: 3rem;
+    margin-right: 3rem;
+}
+@include utility('m2'){
+    margin: 2rem;
+}
+@include utility('m1'){
+    margin: 1rem;
+}
+@include utility('mr1'){
+    margin-right: 1rem;
+}
+@include utility('mrs'){
+    margin-right: .5rem;
+}
+@include utility('mh1'){
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+@include utility('mh1b'){
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+}
+@include utility('mh2'){
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+
+@include utility('flex'){
+    display: flex;
+}
+@include object('container'){
+    width: 1080px;
+    margin : 0 auto;
+    @media only screen and (max-width: 1080px) {
+        width: 100%;
+    }
+}
+@include component('imagebutton'){
+    color : rgba(0, 0, 0, 0.54);
+    cursor: pointer;
+    display: inline-block;
+    padding: 3px;
+    &:hover {
+        background: rgba(134, 134, 134, 0.54);
+    }
+    @include modifier('aligned-center'){
+        position: absolute;
+        top : 5px;
+    }
+    @include modifier('h-aligned-center'){
+        position: absolute;
+        top : -5px;
+    }
+}
+@mixin th-td {
+    &:first-child {
+        padding-left: 10px;
+    }
+    >* {
+        padding-bottom: 15px;
+        padding-top: 10px;
+        position: relative;
+    }
+}
+@include component('datatable'){
+    color : rgba(0, 0, 0, 0.87);
+    border-radius: 2px;
+    box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.4),0px 2px 2px 0px rgba(0,0,0,0.09),0px 1px 5px 0px rgba(0,0,0,0.38);
+    @include element('header'){
+        padding: 1rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    @include element('title'){
+        font-size: 1.1rem;
+    }
+    @include element('header-icons'){
+
+    }
+    @include element('table') {
+        width: 100%;
+        font-size: .8rem;
+        border-collapse: collapse;
+    }
+    @include element('table-header'){
+        color : #797979; 
+    }
+    @include element('row') {
+        border-bottom: 1px solid
+        rgba(224, 224, 224, 1);
+        > * {
+            margin: 0;
+            padding: 0;
+        }
+        @include modifier('selected'){
+            background: #c7c7c7;
+        }
+    }
+    
+    @include element('th') {
+        text-align: left;
+        cursor: pointer;
+        user-select: none;
+        @include th-td;
+        >* {
+            padding-top: 0px;
+        }
+       
+       
+        @include modifier('sort-active'){
+            padding-left: 6px;
+            color : rgba(0, 0, 0, 0.87);
+            >* {
+                padding-left: 20px;
+                display: block;
+            }
+        }
+    }
+    @include element('td') {
+        @include th-td;
+        
+    }
+    @include element('th-sort-icon'){
+        position: absolute;
+        left: 0;
+    }
+    @include element('header-button-holder'){
+        min-width: 20px;
+        position: relative;
+    }
+    @include element('footer'){
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 1rem;
+    }
+    @include element('pagination'){
+        color : #797979; 
+        display: flex;
+        flex-direction: row;
+        font-size: .8rem;
+        align-items: center;
+    }
+}
+@include component('select'){
+    position: relative;
+    select {
+        color : #797979; 
+        border : 0px;
+        padding: 10px 30px 10px 5px;
+        background: none;
+        user-select: none;
+        border-radius: 0;
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        cursor: pointer;
+    }
+    .icon-holder {
+        position: absolute;
+        top: 5px;
+        right: 0px;
+        pointer-events: none;
+    }
+}
+
+
+
+
